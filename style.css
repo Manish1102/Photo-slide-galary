@@ -1,6 +1,19 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #040404;
+}
+
 /* Navigation Bar */
 nav {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #333;
   color: #fff;
   height: 50px;
   position: fixed;
@@ -36,9 +49,6 @@ nav a:hover {
 }
 
 /* Slide Gallery */
-/* ... (Previous CSS rules) ... */
-
-/* Slide Gallery */
 .slideshow-container {
   position: relative;
   width: 100%;
@@ -46,6 +56,8 @@ nav a:hover {
   height: calc(100vh - 50px); /* Adjust slide container height to fit the screen */
   margin: 0 auto;
   overflow: hidden;
+  box-shadow: 0 4px 8px rgba(249, 246, 246, 0.2);
+  border: 2px solid #ddd;
 }
 
 .slide {
@@ -55,34 +67,23 @@ nav a:hover {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .slide.active {
   opacity: 1;
-  z-index: 1;
+  transform: translateX(0%);
 }
 
-/* Fading Animation */
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+.slide.inactive-left {
+  opacity: 0;
+  transform: translateX(-100%);
 }
 
-/* Delay each slide animation to create smooth transition */
-.slide:nth-child(2) {
-  animation: fadeInOut 6s infinite 2s;
-}
-
-.slide:nth-child(3) {
-  animation: fadeInOut 6s infinite 4s;
+.slide.inactive-right {
+  opacity: 0;
+  transform: translateX(100%);
 }
 
 .card {
@@ -91,6 +92,8 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ddd;
 }
 
 .card img {
@@ -102,44 +105,11 @@ nav a:hover {
 
 .card:hover img {
   transform: scale(1.1);
-}
-
-
-
-.card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.card:hover img {
-  transform: scale(1.1);
-}
-
-/* Blurred Background */
-.background-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #FF6F61;
-  opacity: 0.5;
-  z-index: -1;
 }
 
 /* Footer */
 footer {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #333;
   color: #fff;
   height: 50px;
   text-align: center;
@@ -148,6 +118,24 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional Styling */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #555;
 }
 
 /* Animation */
@@ -161,12 +149,4 @@ footer {
 @keyframes openingAnimation {
   0% { background-color: #333; }
   100% { background-color: #0f0f1a; }
-}
-
-/* Additional Styling */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  animation: openingAnimation 2s forwards;
 }
